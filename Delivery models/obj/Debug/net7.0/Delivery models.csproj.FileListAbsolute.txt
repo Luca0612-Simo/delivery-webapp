@@ -1,0 +1,11 @@
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\bin\Debug\net7.0\Delivery models.deps.json
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\bin\Debug\net7.0\Delivery models.dll
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\bin\Debug\net7.0\Delivery models.pdb
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\obj\Debug\net7.0\Delivery models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\obj\Debug\net7.0\Delivery models.AssemblyInfoInputs.cache
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\obj\Debug\net7.0\Delivery models.AssemblyInfo.cs
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\obj\Debug\net7.0\Delivery models.csproj.CoreCompileInputs.cache
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\obj\Debug\net7.0\Delivery models.dll
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\obj\Debug\net7.0\refint\Delivery models.dll
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\obj\Debug\net7.0\Delivery models.pdb
+C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery models\obj\Debug\net7.0\ref\Delivery models.dll

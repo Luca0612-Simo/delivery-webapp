@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark my-custom-navbar">
+  <div class="container-fluid">
+      <img src="assets/img/navbarfoto.png" class="navbar-logo me-2" alt="Logo Duende Delivery">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home/productos">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home/alimentos">Alimentos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home/higiene">Higiene</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home/salud">Salud</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item position-relative">
+          <a class="nav-link active" aria-current="page" href="home/carrito">
+            <i class="fas fa-shopping-cart me-1"></i>
+            
+          </a>
+            
+        </li>
+        <li class="nav-item">
+          <button class="btn nav-link" data-bs-toggle="modal" data-bs-target="#Modal1">
+            <i class="fas fa-sign-out-alt me-1"></i></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content logout-modal-content">
+      <div class="modal-header logout-modal-header">
+        <h1 class="modal-title fs-5" id="logoutModalLabel">Cerrar sesión</h1>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body logout-modal-body">
+        <p class="text-center mb-0">¿Estás seguro de que quieres cerrar tu sesión?</p>
+      </div>
+      <div class="modal-footer logout-modal-footer">
+        <button type="button" class="btn btn-secondary logout-cancel-button" data-bs-dismiss="modal">Cancelar</button>
+        <a class="nav-link active logout-confirm-button" aria-current="page" href="">Cerrar sesión</a>
+      </div>
+    </div>
+  </div>
+</div>

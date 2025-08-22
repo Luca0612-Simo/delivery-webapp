@@ -1,0 +1,244 @@
+<section class="h-100 h-custom" style="background-color: #f8f8f8;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card rounded-3 shadow-lg">
+          <div class="card-body p-4">
+
+            <div class="row">
+              <!--Inicio del carrito-->
+              <div class="col-lg-7">
+                <h5 class="mb-4 text-muted">
+                  <a class="nav-link text-decoration-none text-success-emphasis" href="home/productos">
+                    <i class="fas fa-arrow-left me-2"></i> Seguir comprando
+                  </a>
+                </h5>
+                <hr class="my-4">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div>
+                    <h4 class="mb-0 text-dark">Tu Carrito de Compras</h4>
+                    <p class="mb-0 text-muted">Actualmente tenes {{ DataSourceProductos.length || 0 }}
+                      productos en tu carrito!</p>
+                  </div>
+                </div>
+
+                <ng-container *ngIf="DataSourceProductos.length > 0; else noProducts">
+                  <div class="card mb-3 shadow-sm rounded-3 product-item-card" *ngFor="let item of DataSourceProductos">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-row align-items-center">
+                          <div>
+                            <h5 class="mb-0 text-dark">{{ item.nombre }}</h5>
+                            <p class="small text-muted mb-0">{{ item.marca }}</p>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <div style="width: 50px;">
+                            <h5 class="fw-normal mb-0 text-dark">1</h5>
+                          </div>
+                          <div style="width: 80px;">
+                            <h5 class="mb-0 text-dark">${{ item.precio }}</h5>
+                          </div>
+                          <div class="ms-3">
+                            <button class="btn btn-outline-danger btn-sm border-0" data-bs-toggle="modal"
+                              data-bs-target="#DeleteProducto" (click)="SetProducto(item)" title="Eliminar producto">
+                              <i class="fas fa-trash-alt fa-lg"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-template #noProducts>
+                  <div class="alert alert-info text-center" role="alert">
+                    ¡Tu carrito está vacio!
+                  </div>
+                </ng-template>
+
+                <div class="mt-4 text-end">
+                  <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#Mapa">
+                    Finalizar compra
+                  </button>
+
+                </div>
+
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card bg-light text-dark rounded-3 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="mb-4 text-center">Resumen del Pedido</h5>
+                    <hr class="my-3">
+
+                    <div class="d-flex justify-content-between mb-2">
+                      <p class="text-muted mb-0">Subtotal:</p>
+                      <p class="mb-0">${{ calculateSubtotal() }}</p>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                      <p class="text-muted mb-0">Mantenimiento de la aplicación:</p>
+                      <p class="mb-0">$20.00</p>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <div class="d-flex justify-content-between mb-4">
+                      <h5 class="text-dark mb-0">Total:</h5>
+                      <h5 class="text-dark mb-0">${{ calculateTotal() }}</h5>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Fin del carrito-->
+<!--Inicio del modal DeleteProducto-->
+<div class="modal fade" id="DeleteProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar producto del carrito</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="">¿Estás seguro de eliminar este producto de tu carrito?</label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="DeleteProductoInCarrito()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Fin del modal DeleteProducto-->
+
+<!--Inicio del modal mapa-->
+<div class="modal fade" id="Mapa" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="mapModalLabel">Ingrese su domicilio para el envío</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="addressInput" class="form-label">Buscar dirección:</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="addressInput"
+              placeholder="Ej: Av. Corrientes 1234, Buenos Aires" [(ngModel)]="address" (keyup.enter)="searchAddress()">
+            <button class="btn btn-outline-secondary" type="button" (click)="searchAddress()">Buscar</button>
+          </div>
+        </div>
+        <div id="map" style="height: 400px; width: 100%; border-radius: 8px;" *ngIf="isMapModalOpen"></div>
+        <div *ngIf="selectedLocation" class="mt-3">
+          <p>Dirección seleccionada: <strong>{{ selectedLocation.address }}</strong></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+          (click)="closeMapModal()">Cancelar</button>
+        <button type="button" class="btn btn-primary" [disabled]="!selectedLocation" data-bs-toggle="modal"
+          data-bs-target="#MetodoDePago">Confirmar Domicilio</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Fin del modal mapa-->
+
+<!--Inicio del modal Metododepago-->
+<div class="modal fade" id="MetodoDePago" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content payment-modal-content">
+      <div class="modal-header payment-modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Seleccione el método de pago</h1>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="paymentMethodSelect" class="form-label">Método de Pago:</label>
+          <select class="form-select" id="paymentMethodSelect" [(ngModel)]="selectedPaymentMethod">
+            <option value="Efectivo">Efectivo</option>
+            <option value="Tarjeta">Tarjeta</option>
+          </select>
+        </div>
+
+        <div class="col-lg-12" *ngIf="selectedPaymentMethod === 'Tarjeta'">
+          <div class="card payment-card-details rounded-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0 text-dark">Detalles de la tarjeta</h5>
+              </div>
+              <form class="mt-4">
+                <div class="form-outline mb-4">
+                  <label class="form-label payment-label" for="typeName">Nombre que figura en la tarjeta</label>
+                  <input type="text" id="typeName" class="form-control form-control-lg payment-input" size="17"
+                    placeholder="Ej: Juan Jose Perez" [(ngModel)]="cardHolderName" name="cardHolderName" required />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label payment-label" for="typeNumber">Numero de la tarjeta</label>
+                  <input type="text" id="typeNumber" class="form-control form-control-lg payment-input" size="17"
+                    placeholder="Ej: 1234 5678 9012 3456" minlength="19" maxlength="19" [(ngModel)]="cardNumber"
+                    name="cardNumber" required />
+                </div>
+
+                <div class="row mb-4">
+                  <div class="col-md-6">
+                    <div class="form-outline">
+                      <label class="form-label payment-label" for="typeExp">Fecha de vencimiento</label>
+                      <input type="text" id="typeExp" class="form-control form-control-lg payment-input"
+                        placeholder="MM/YYYY" size="7" minlength="7" maxlength="7" [(ngModel)]="cardExpiration"
+                        name="cardExpiration" required />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-outline">
+                      <label class="form-label payment-label" for="typeCvv">CVV</label>
+                      <input type="password" id="typeCvv" class="form-control form-control-lg payment-input"
+                        placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" [(ngModel)]="cardCvv"
+                        name="cardCvv" required />
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <hr class="my-4">
+
+              <div class="d-flex justify-content-between">
+                <p class="mb-2 text-dark">Subtotal</p>
+                <p class="mb-2 text-dark">${{ calculateSubtotal() }}</p>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <p class="mb-2 text-dark">Mantenimiento de la aplicación</p>
+                <p class="mb-2 text-dark">$20.00</p>
+              </div>
+
+              <div class="d-flex justify-content-between mb-4">
+                <p class="mb-2 text-dark">Total</p>
+                <p class="mb-2 text-dark">${{ calculateTotal() }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary payment-confirm-button" (click)="ConfirmarCompra()">Pagar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Fin del modal metodo de pago-->
+
+<div id="liveAlertPlaceholder" class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1060;">
+</div>

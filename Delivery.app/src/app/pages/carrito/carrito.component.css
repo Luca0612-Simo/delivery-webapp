@@ -1,0 +1,270 @@
+section.h-custom {
+  min-height: 100vh; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.card.rounded-3 {
+  border-radius: 1rem; 
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
+  border: none; 
+}
+
+.text-success-emphasis {
+  color: #66BB6A !important; 
+  font-weight: 600; 
+}
+
+.text-success-emphasis:hover {
+  color: #5cb85c !important; 
+}
+
+h4.text-dark {
+  color: #333 !important;
+  font-weight: 700; 
+}
+
+p.text-muted {
+  color: #777 !important; 
+}
+
+.product-item-card {
+  border-radius: 0.75rem; 
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.08); 
+  border: 1px solid #e0e0e0; 
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.product-item-card:hover {
+  transform: translateY(-3px); 
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.12);
+}
+
+.product-item-card .card-body {
+  padding: 1rem; 
+}
+
+.product-item-card h5.text-dark {
+  font-size: 1.1rem; 
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.product-item-card p.small {
+  font-size: 0.85rem; 
+}
+
+.btn-outline-danger {
+  color: #dc3545; 
+  border-color: transparent; 
+  background-color: transparent;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.btn-outline-danger:hover {
+  color: #fff;
+  background-color: #dc3545; 
+  border-color: #dc3545;
+}
+
+.btn-success {
+  background-color: #66BB6A !important;
+  border-color: #66BB6A !important;
+  font-weight: bold;
+  border-radius: 0.75rem; 
+  padding: 0.75rem 1.5rem; 
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.btn-success:hover {
+  background-color: #5cb85c !important;
+  border-color: #5cb85c !important;
+  box-shadow: 0 0.35rem 0.7rem rgba(0, 0, 0, 0.15);
+}
+
+.col-lg-5 .card {
+  background-color: #e0f2f1 !important; 
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.col-lg-5 .card h5 {
+  color: #333 !important;
+  font-weight: 600;
+}
+
+.col-lg-5 .card p {
+  color: #555 !important;
+}
+
+.col-lg-5 .card hr {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#MetodoDePago .modal-content {
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+#MetodoDePago .modal-header {
+  background-color: #66BB6A;
+  color: white;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+#MetodoDePago .modal-title {
+  color: white;
+  font-weight: 600;
+}
+
+#MetodoDePago .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+#MetodoDePago .payment-card-details {
+  background-color: #F8F9FA !important;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  border: 1px solid #E0E0E0;
+  padding: 1.5rem;
+  color: #333;
+}
+
+#MetodoDePago .payment-card-details h5 {
+  color: #333;
+  font-weight: 600;
+}
+
+#MetodoDePago .payment-label {
+  color: #555;
+  font-weight: 500;
+}
+
+#MetodoDePago .payment-input {
+  background-color: #FFFFFF;
+  border: 1px solid #CED4DA;
+  color: #333;
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#MetodoDePago .payment-input::placeholder {
+  color: #6C757D;
+}
+
+#MetodoDePago .payment-input:focus {
+  border-color: #66BB6A;
+  box-shadow: 0 0 0 0.25rem rgba(102, 187, 106, 0.25);
+  outline: none;
+}
+
+#MetodoDePago .payment-card-details hr {
+  border-top: 1px solid #E0E0E0;
+}
+
+#MetodoDePago .payment-card-details p {
+  color: #333;
+}
+
+#MetodoDePago .payment-confirm-button {
+  background-color: #66BB6A !important;
+  border-color: #66BB6A !important;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#MetodoDePago .payment-confirm-button:hover {
+  background-color: #5cb85c !important;
+  border-color: #5cb85c !important;
+  box-shadow: 0 0.35rem 0.7rem rgba(0, 0, 0, 0.15);
+}
+
+#MetodoDePago .form-select {
+  background-color: #FFFFFF;
+  border: 1px solid #CED4DA;
+  color: #333;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+}
+
+#MetodoDePago .form-select option {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+#MetodoDePago .form-select:focus {
+  border-color: #66BB6A;
+  box-shadow: 0 0 0 0.25rem rgba(102, 187, 106, 0.25);
+  outline: none;
+}
+
+#Mapa .modal-content {
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+#Mapa .modal-header {
+  background-color: #66BB6A; 
+  color: white;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+#Mapa .modal-title {
+  color: white;
+}
+
+#Mapa .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%); 
+}
+
+#Mapa .modal-footer .btn-primary {
+  background-color: #66BB6A !important;
+  border-color: #66BB6A !important;
+}
+
+#Mapa .modal-footer .btn-primary:hover {
+  background-color: #5cb85c !important;
+  border-color: #5cb85c !important;
+}
+
+#DeleteProducto .modal-content {
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+#DeleteProducto .modal-header {
+  background-color: #dc3545; 
+  color: white;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+#DeleteProducto .modal-title {
+  color: white;
+}
+
+#DeleteProducto .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+#DeleteProducto .modal-footer .btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+
+#DeleteProducto .modal-footer .btn-danger:hover {
+  background-color: #c82333 !important;
+  border-color: #c82333 !important;
+}

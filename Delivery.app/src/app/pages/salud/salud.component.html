@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-6 col-md-3 mb-4" *ngFor="let x of DataSourceProductos">
+      <div class="card h-100">
+        <img [src]="x.imagen" class="card-img-top product-card-img" alt="{{x.nombre}}">
+        <div class="card-body">
+          <h5 class="card-title">{{x.nombre}}</h5>
+          <p class="card-text">{{x.marca}}</p>
+          <p class="card-text">${{x.precio}}</p>
+          <button type="button" class="btn btn-primary" (click)="InsertInCarrito(x)">Añadir al carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="liveAlertPlaceholder" class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1060;">
+</div>

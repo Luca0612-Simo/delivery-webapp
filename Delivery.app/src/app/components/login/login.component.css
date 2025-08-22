@@ -1,0 +1,75 @@
+.login-container {
+  background: linear-gradient(135deg, #e0f2f1 0%, #a5d6a7 100%); 
+}
+
+.login-card {
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); 
+  border: none; 
+  padding: 2.5rem !important; 
+  background-color: #ffffff; 
+}
+
+.login-title {
+  color: #333; 
+  font-weight: 700; 
+  font-size: 2rem; 
+  margin-bottom: 2rem !important; 
+}
+
+.login-label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+  display: block; 
+}
+
+.login-input {
+  border-radius: 0.75rem; 
+  padding: 0.8rem 1rem; 
+  border: 1px solid #ccc; 
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.login-input:focus {
+  border-color: #66BB6A; 
+  box-shadow: 0 0 0 0.25rem rgba(102, 187, 106, 0.25); 
+  outline: none; 
+}
+
+.login-button {
+  background-color: #66BB6A !important; 
+  border-color: #66BB6A !important;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.75rem; 
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.login-button:hover {
+  background-color: #5cb85c !important;
+  border-color: #5cb85c !important;
+  box-shadow: 0 0.35rem 0.7rem rgba(0, 0, 0, 0.15);
+}
+
+.forgot-password-link {
+  color: #66BB6A; 
+  font-size: 0.9rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.forgot-password-link:hover {
+  color: #5cb85c; 
+}
+
+.text-danger {
+  color: #dc3545 !important; 
+  font-weight: bold;
+}
+
+.text-success {
+  color: #66BB6A !important; 
+  font-weight: bold;
+}
