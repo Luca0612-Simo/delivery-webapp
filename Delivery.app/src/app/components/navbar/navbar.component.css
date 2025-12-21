@@ -11,7 +11,7 @@
 }
 
 .my-custom-navbar {
-  background-color: #66BB6A; 
+  background-color: #F2A1C2; 
   min-height: 85px; 
 }
 
@@ -49,7 +49,7 @@
 }
 
 .logout-modal-header {
-  background-color: #66BB6A;
+  background-color: #F2A1C2;
   color: white;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;

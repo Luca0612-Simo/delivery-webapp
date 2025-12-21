@@ -31,14 +31,14 @@
 }
 
 .btn-primary {
-  background-color: #66BB6A; 
-  border-color: #66BB6A;
+  background-color: #F2A1C2; 
+  border-color: #F2A1C2;
   border-radius: 8px; 
   font-weight: bold;
   transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
 .btn-primary:hover {
-  background-color: #5cb85c; 
-  border-color: #5cb85c;
+  background-color: #F2A1C2; 
+  border-color: #F2A1C2;
 }

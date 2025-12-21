@@ -32,14 +32,14 @@
 }
 
 .login-input:focus {
-  border-color: #66BB6A; 
+  border-color: #F2A1C2; 
   box-shadow: 0 0 0 0.25rem rgba(102, 187, 106, 0.25); 
   outline: none; 
 }
 
 .login-button {
-  background-color: #66BB6A !important; 
-  border-color: #66BB6A !important;
+  background-color: #F2A1C2 !important; 
+  border-color: #F2A1C2 !important;
   color: white;
   font-weight: bold;
   border-radius: 0.75rem; 
@@ -55,7 +55,7 @@
 }
 
 .forgot-password-link {
-  color: #66BB6A; 
+  color: #F2A1C2; 
   font-size: 0.9rem;
   transition: color 0.2s ease-in-out;
 }
@@ -70,6 +70,6 @@
 }
 
 .text-success {
-  color: #66BB6A !important; 
+  color: #F2A1C2 !important; 
   font-weight: bold;
 }

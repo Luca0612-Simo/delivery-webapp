@@ -12,12 +12,12 @@ section.h-custom {
 }
 
 .text-success-emphasis {
-  color: #66BB6A !important; 
+  color: #F2A1C2 !important; 
   font-weight: 600; 
 }
 
 .text-success-emphasis:hover {
-  color: #5cb85c !important; 
+  color: #F2A1C2 !important; 
 }
 
 h4.text-dark {
@@ -69,8 +69,8 @@ p.text-muted {
 }
 
 .btn-success {
-  background-color: #66BB6A !important;
-  border-color: #66BB6A !important;
+  background-color: #F2A1C2 !important;
+  border-color: #F2A1C2 !important;
   font-weight: bold;
   border-radius: 0.75rem; 
   padding: 0.75rem 1.5rem; 
@@ -79,8 +79,8 @@ p.text-muted {
 }
 
 .btn-success:hover {
-  background-color: #5cb85c !important;
-  border-color: #5cb85c !important;
+  background-color: #F2A1C2 !important;
+  border-color: #F2A1C2 !important;
   box-shadow: 0 0.35rem 0.7rem rgba(0, 0, 0, 0.15);
 }
 
@@ -111,7 +111,7 @@ p.text-muted {
 }
 
 #MetodoDePago .modal-header {
-  background-color: #66BB6A;
+  background-color: #F2A1C2;
   color: white;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -160,7 +160,7 @@ p.text-muted {
 }
 
 #MetodoDePago .payment-input:focus {
-  border-color: #66BB6A;
+  border-color: #F2A1C2;
   box-shadow: 0 0 0 0.25rem rgba(102, 187, 106, 0.25);
   outline: none;
 }
@@ -174,8 +174,8 @@ p.text-muted {
 }
 
 #MetodoDePago .payment-confirm-button {
-  background-color: #66BB6A !important;
-  border-color: #66BB6A !important;
+  background-color: #F2A1C2 !important;
+  border-color: #F2A1C2 !important;
   color: white;
   font-weight: bold;
   border-radius: 0.75rem;
@@ -185,8 +185,8 @@ p.text-muted {
 }
 
 #MetodoDePago .payment-confirm-button:hover {
-  background-color: #5cb85c !important;
-  border-color: #5cb85c !important;
+  background-color: #F2A1C2 !important;
+  border-color: #F2A1C2 !important;
   box-shadow: 0 0.35rem 0.7rem rgba(0, 0, 0, 0.15);
 }
 
@@ -204,7 +204,7 @@ p.text-muted {
 }
 
 #MetodoDePago .form-select:focus {
-  border-color: #66BB6A;
+  border-color: #F2A1C2;
   box-shadow: 0 0 0 0.25rem rgba(102, 187, 106, 0.25);
   outline: none;
 }
@@ -215,7 +215,7 @@ p.text-muted {
 }
 
 #Mapa .modal-header {
-  background-color: #66BB6A; 
+  background-color: #F2A1C2; 
   color: white;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -230,13 +230,13 @@ p.text-muted {
 }
 
 #Mapa .modal-footer .btn-primary {
-  background-color: #66BB6A !important;
-  border-color: #66BB6A !important;
+  background-color: #F2A1C2 !important;
+  border-color: #F2A1C2 !important;
 }
 
 #Mapa .modal-footer .btn-primary:hover {
-  background-color: #5cb85c !important;
-  border-color: #5cb85c !important;
+  background-color: #F2A1C2 !important;
+  border-color: #F2A1C2 !important;
 }
 
 #DeleteProducto .modal-content {
