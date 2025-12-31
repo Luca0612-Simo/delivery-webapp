@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CarritoService } from '../../services/carrito.service';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -12,25 +12,45 @@ declare const bootstrap: any;
   styleUrl: './productos.component.css'
 })
 export class ProductosComponent implements OnInit {
-  constructor(private service: ProductosService, 
-    private serviceCarrito: CarritoService, 
+  constructor(private service: ProductosService,
+    private serviceCarrito: CarritoService,
     private router: Router,
-  @Inject(PLATFORM_ID) private platformId: Object) { }
+    private route: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: Object) { }
 
   DataSourceProductos: any;
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const status = params['status']
+      const collection_status = params['collection_status'];
+      const paymentId = params['payment_id'];
+      if (status === 'approved' || collection_status === 'approved' || paymentId) {
+        this.vaciarCarritoTrasPago();
+      }
+    });
+
     if (typeof window !== 'undefined') {
       let user_state = localStorage.getItem("user_state");
-
       if (user_state === "true") {
         this.GetProductos();
       } else {
         this.router.navigate(['lock']);
       }
-
     }
   }
+
+  vaciarCarritoTrasPago() {
+    this.serviceCarrito.ClearCarrito().subscribe({
+      next: () => {
+        this.showAlertInsertCarrito('¡Pago aprobado! Tu pedido fue procesado.', 'success');
+        this.router.navigate([], { queryParams: { status: null }, queryParamsHandling: 'merge' });
+      },
+      error: (err) => console.error("Error al vaciar el carrito post-pago", err)
+    });
+  }
+
+
   GetProductos() {
     this.service.GetProductos().subscribe(x => {
       this.DataSourceProductos = x;
@@ -38,7 +58,7 @@ export class ProductosComponent implements OnInit {
       //this.GetCategorias();
     })
   }
-  InsertInCarrito(productoSeleccionado:any) {
+  InsertInCarrito(productoSeleccionado: any) {
 
     let producto = {
       id: productoSeleccionado.id,
@@ -48,12 +68,12 @@ export class ProductosComponent implements OnInit {
     }
     this.serviceCarrito.InsertInCarrito(producto).subscribe(x => {
       //this.GetCategorias();
-      this.showAlertInsertCarrito('¡Tu producto fue agregado al carrito con exito!','success')
+      this.showAlertInsertCarrito('¡Tu producto fue agregado al carrito con exito!', 'success')
       //location.reload();
-    },(error)=>{
+    }, (error) => {
       console.error("no se pudo agregar el producto al carrito", error)
     })
-    
+
   }
 
   showAlertInsertCarrito(message: string, type: string): void {
@@ -86,6 +106,6 @@ export class ProductosComponent implements OnInit {
           }
         }
       }, 1000);
-    } 
+    }
   }
 }

@@ -27,7 +27,7 @@ export class CarritoService {
   }
 
   createPreference(costoEnvio: number) {
-  const urlPagos = "https://localhost:4200/api/pagos/CreatePreference";
-  return this.httpClient.post(urlPagos, costoEnvio);
+  const urlPagos = "https://localhost:7060/api/pagos/CreatePreference";
+  return this.httpClient.post(urlPagos, {costoEnvio});
 }
 }
