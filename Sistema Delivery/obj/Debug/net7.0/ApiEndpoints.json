@@ -146,8 +146,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "costoEnvio",
-        "Type": "System.Decimal",
+        "Name": "data",
+        "Type": "Sistema_Delivery.Controllers.PagosController\u002BPagoRequest",
         "IsRequired": true
       }
     ],
