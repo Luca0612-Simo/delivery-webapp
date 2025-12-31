@@ -138,6 +138,22 @@
     ]
   },
   {
+    "ContainingType": "Sistema_Delivery.Controllers.PagosController",
+    "Method": "CreatePreference",
+    "RelativePath": "api/pagos/CreatePreference",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "costoEnvio",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Sistema_Delivery.Controllers.ProductosController",
     "Method": "GetAlimentos",
     "RelativePath": "api/productos/GetAlimentos",

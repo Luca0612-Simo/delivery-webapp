@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\Delivery models.csproj": {}
+    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\Delivery models.csproj": {}
   },
   "projects": {
-    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\Delivery models.csproj": {
+    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\Delivery models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\Delivery models.csproj",
+        "projectUniqueName": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\Delivery models.csproj",
         "projectName": "Delivery models",
-        "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\Delivery models.csproj",
+        "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\Delivery models.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\obj\\",
+        "outputPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,0 +1,12 @@
+# Visual Studio 2022 archivos temporales
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de publicación y paquetes
+publish/
+*.nuget

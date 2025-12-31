@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Sistema Delivery\\Sistema Delivery.csproj": {}
+    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Sistema Delivery\\Sistema Delivery.csproj": {}
   },
   "projects": {
-    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\Delivery models.csproj": {
+    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\Delivery models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\Delivery models.csproj",
+        "projectUniqueName": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\Delivery models.csproj",
         "projectName": "Delivery models",
-        "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\Delivery models.csproj",
+        "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\Delivery models.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\obj\\",
+        "outputPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery services\\Delivery services.csproj": {
+    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery services\\Delivery services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery services\\Delivery services.csproj",
+        "projectUniqueName": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery services\\Delivery services.csproj",
         "projectName": "Delivery services",
-        "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery services\\Delivery services.csproj",
+        "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery services\\Delivery services.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery services\\obj\\",
+        "outputPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -90,8 +90,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\Delivery models.csproj": {
-                "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery models\\Delivery models.csproj"
+              "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\Delivery models.csproj": {
+                "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery models\\Delivery models.csproj"
               }
             }
           }
@@ -140,14 +140,14 @@
         }
       }
     },
-    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Sistema Delivery\\Sistema Delivery.csproj": {
+    "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Sistema Delivery\\Sistema Delivery.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Sistema Delivery\\Sistema Delivery.csproj",
+        "projectUniqueName": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Sistema Delivery\\Sistema Delivery.csproj",
         "projectName": "Sistema Delivery",
-        "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Sistema Delivery\\Sistema Delivery.csproj",
+        "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Sistema Delivery\\Sistema Delivery.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Sistema Delivery\\obj\\",
+        "outputPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Sistema Delivery\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -165,8 +165,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery services\\Delivery services.csproj": {
-                "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\Delivery services\\Delivery services.csproj"
+              "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery services\\Delivery services.csproj": {
+                "projectPath": "C:\\Luca\\AS 2do año\\NT2\\Sistema Delivery\\delivery-webapp\\Delivery services\\Delivery services.csproj"
               }
             }
           }
@@ -193,6 +193,10 @@
             "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "mercadopago-sdk": {
+              "target": "Package",
+              "version": "[2.11.0, )"
             }
           },
           "imports": [

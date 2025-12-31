@@ -13,3 +13,19 @@ C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery services\obj\Debug\net7.0\Deli
 C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery services\obj\Debug\net7.0\refint\Delivery services.dll
 C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery services\obj\Debug\net7.0\Delivery services.pdb
 C:\Luca\AS 2do año\NT2\Sistema Delivery\Delivery services\obj\Debug\net7.0\ref\Delivery services.dll
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\bin\Debug\net7.0\Delivery services.deps.json
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\bin\Debug\net7.0\Delivery services.dll
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\bin\Debug\net7.0\Delivery services.pdb
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\bin\Debug\net7.0\Delivery models.dll
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\bin\Debug\net7.0\Delivery models.pdb
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\Delivery services.csproj.AssemblyReference.cache
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\Delivery services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\Delivery services.AssemblyInfoInputs.cache
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\Delivery services.AssemblyInfo.cs
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\Delivery services.csproj.CoreCompileInputs.cache
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\Delivery services.sourcelink.json
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\Delivery.A678D512.Up2Date
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\Delivery services.dll
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\refint\Delivery services.dll
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\Delivery services.pdb
+C:\Luca\AS 2do año\NT2\Sistema Delivery\delivery-webapp\Delivery services\obj\Debug\net7.0\ref\Delivery services.dll
