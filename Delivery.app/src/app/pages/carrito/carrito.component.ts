@@ -1,10 +1,11 @@
-import { Component, OnInit, AfterViewInit, NgZone, Inject, PLATFORM_ID} from '@angular/core';
+import { Component, OnInit, AfterViewInit, NgZone, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service';
 import { Router } from '@angular/router';
 
 declare const google: any;
 declare const bootstrap: any;
+declare var MercadoPago: any;
 
 @Component({
   selector: 'app-carrito',
@@ -27,27 +28,61 @@ export class CarritoComponent implements OnInit, AfterViewInit {
   geocoder: google.maps.Geocoder | undefined;
   address: string = '';
   selectedLocation: { lat: number, lng: number, address: string } | undefined;
-  isMapModalOpen: boolean = true; 
+  isMapModalOpen: boolean = true;
+  isDeliverySelected: boolean = false;
+  deliveryFee: number = 1500;
+  minAmountForDelivery: number = 10000;
 
-  selectedPaymentMethod: string = 'Efectivo'; 
+  selectedPaymentMethod: string = 'Efectivo';
 
   id: any;
   nombre: any;
   marca: any;
   precio: any;
 
-  cardHolderName: string = '';
-  cardNumber: string = '';
-  cardExpiration: string = '';
-  cardCvv: string = '';
+  mp : any;
+
+  onPagarMercadoPago() {
+    const costoEnvio = this.isDeliverySelected ? this.deliveryFee : 0;
+
+    this.service.createPreference(costoEnvio).subscribe({
+      next: (res: any) => {
+        this.mp.checkout({
+          preference: {
+            id: res.id
+          },
+          autoOpen: true
+        });
+      },
+      error: (err) => {
+        console.error("Error detallado del servidor:", err);
+        this.showAlert('Error al conectar con Mercado Pago', 'danger');
+      }
+    });
+  }
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
       let user_state = localStorage.getItem("user_state");
       if (user_state === "true") {
         this.GetCarrito();
+        this.initMercadoPago();
       } else {
         this.router.navigate(['lock']);
+      }
+    }
+  }
+
+  initMercadoPago() {
+    if (isPlatformBrowser(this.platformId)) {
+      // Verificamos si la variable global ya existe
+      if (typeof MercadoPago !== 'undefined') {
+        this.mp = new MercadoPago('APP_USR-d25d536a-2fb9-47ef-92a9-a20c4e0d0f38', {
+          locale: 'es-AR'
+        });
+      } else {
+        // Si no existe, esperamos un momento y reintentamos
+        setTimeout(() => this.initMercadoPago(), 500);
       }
     }
   }
@@ -60,22 +95,22 @@ export class CarritoComponent implements OnInit, AfterViewInit {
           this.ngZone.run(() => {
             setTimeout(() => {
               this.initMap();
-            }, 100); 
+            }, 100);
           });
         });
 
         modalElement.addEventListener('hidden.bs.modal', () => {
           this.ngZone.run(() => {
-            this.isMapModalOpen = false; 
-            this.map = undefined; 
-            this.marker = undefined; 
-            this.selectedLocation = undefined; 
+            this.isMapModalOpen = false;
+            this.map = undefined;
+            this.marker = undefined;
+            this.selectedLocation = undefined;
             this.address = '';
           });
         });
 
-      } 
-    } 
+      }
+    }
   }
 
   openMapModal(): void {
@@ -112,10 +147,10 @@ export class CarritoComponent implements OnInit, AfterViewInit {
           if (latLngObject) {
             centerPosition = { lat: latLngObject.lat(), lng: latLngObject.lng() };
           } else {
-            centerPosition = { lat: -34.6037, lng: -58.3816 }; 
+            centerPosition = { lat: -34.6037, lng: -58.3816 };
           }
         } else {
-          centerPosition = { lat: -34.6037, lng: -58.3816 }; 
+          centerPosition = { lat: -34.6037, lng: -58.3816 };
         }
         this.map.setCenter(centerPosition);
         return;
@@ -123,7 +158,7 @@ export class CarritoComponent implements OnInit, AfterViewInit {
 
       const initialLatLng = { lat: -34.6037, lng: -58.3816 };
 
-      this.map = new google.maps.Map(mapDiv, { 
+      this.map = new google.maps.Map(mapDiv, {
         center: initialLatLng,
         zoom: 12,
         mapTypeControl: false,
@@ -165,7 +200,7 @@ export class CarritoComponent implements OnInit, AfterViewInit {
       map: this.map,
       animation: google.maps.Animation.DROP
     });
-    this.map?.setCenter(location);  
+    this.map?.setCenter(location);
   }
 
   placeMarkerAndGeocode(location: google.maps.LatLng): void {
@@ -278,67 +313,27 @@ export class CarritoComponent implements OnInit, AfterViewInit {
   }
 
   calculateTotal(): number {
-    const Costo = 20.00;
-    return this.calculateSubtotal() + Costo;
-  }
+    let total = this.calculateSubtotal();
 
-  private validateCardFields(): boolean {
-    if (!this.cardHolderName.trim()) {
-      this.showAlert('Por favor, ingrese el nombre del titular de la tarjeta.', 'danger');
-      return false;
-    }
-    if (!/^\d{16}$/.test(this.cardNumber.replace(/\s/g, ''))) {
-      this.showAlert('Por favor, ingrese un número de tarjeta válido (16 dígitos).', 'danger');
-      return false;
+    if (this.isDeliverySelected && this.calculateSubtotal() >= this.minAmountForDelivery) {
+      total += this.deliveryFee;
     }
 
-    const expDateRegex = /^(0[1-9]|1[0-2])\/\d{4}$/;
-    if (!expDateRegex.test(this.cardExpiration)) {
-      this.showAlert('Por favor, ingrese una fecha de vencimiento válida (MM/YYYY).', 'danger');
-      return false;
-    }
-    const [monthStr, yearStr] = this.cardExpiration.split('/');
-    const month = parseInt(monthStr, 10);
-    const year = parseInt(yearStr, 10);
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1; 
-
-    if (year < currentYear || (year === currentYear && month < currentMonth)) {
-      this.showAlert('La fecha de vencimiento no puede ser pasada.', 'danger');
-      return false;
-    }
-
-    if (!/^\d{3,4}$/.test(this.cardCvv)) {
-      this.showAlert('Por favor, ingresa un CVV válido (3 o 4 dígitos).', 'danger');
-      return false;
-    }
-    return true;
+    return total;
   }
 
   ConfirmarCompra(): void {
-    if (!this.DataSourceProductos || this.DataSourceProductos.length === 0) {
-      this.showAlert('No podes finalizar la compra. Tu carrito está vacío.', 'danger');
-      return; 
-    }
+  if (!this.DataSourceProductos || this.DataSourceProductos.length === 0) {
+    this.showAlert('No podes finalizar la compra. Tu carrito está vacío.', 'danger');
+    return; 
+  }
 
-    if (this.selectedPaymentMethod === 'Tarjeta') {
-      if (!this.validateCardFields()) {
-        return; 
-      }
-    }
-
-    if (isPlatformBrowser(this.platformId)) {
-      const modalElement = document.getElementById('MetodoDePago'); 
-      if (modalElement) {
-        const modal = (window as any).bootstrap.Modal.getInstance(modalElement);
-        if (modal) {
-          modal.hide();
-        }
-      }
-    }
+  if (this.selectedPaymentMethod === 'Mercado Pago') {
+    this.onPagarMercadoPago(); // Llama a la lógica de Mercado Pago que agregamos antes
+  } else {
+    // Lógica para Efectivo
     this.ClearCarrito();
-
-    this.showAlert('¡Compra realizada con éxito! Su pedido está en camino. Serás redirigido al catálogo en 3 segundos.', 'success');
+    this.showAlert('¡Pedido registrado! Pagás al recibir. Serás redirigido al catálogo.', 'success');
 
     setTimeout(() => {
       this.ngZone.run(() => {
@@ -346,6 +341,16 @@ export class CarritoComponent implements OnInit, AfterViewInit {
       });
     }, 3000);
   }
+
+  // Cerramos el modal
+  if (isPlatformBrowser(this.platformId)) {
+    const modalElement = document.getElementById('MetodoDePago'); 
+    if (modalElement) {
+      const modal = (window as any).bootstrap.Modal.getInstance(modalElement);
+      if (modal) { modal.hide(); }
+    }
+  }
+}
 
   showAlert(message: string, type: string): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -377,8 +382,7 @@ export class CarritoComponent implements OnInit, AfterViewInit {
           }
         }
       }, 5000);
-    } 
+    }
   }
-
 
 }

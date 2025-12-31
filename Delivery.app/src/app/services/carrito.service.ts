@@ -25,4 +25,9 @@ export class CarritoService {
   ClearCarrito(){
     return this.httpClient.delete(this.url + "ClearCarrito")
   }
+
+  createPreference(costoEnvio: number) {
+  const urlPagos = "https://localhost:4200/api/pagos/CreatePreference";
+  return this.httpClient.post(urlPagos, costoEnvio);
+}
 }

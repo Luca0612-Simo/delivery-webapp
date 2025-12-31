@@ -58,10 +58,11 @@
                 </ng-template>
 
                 <div class="mt-4 text-end">
-                  <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#Mapa">
+                  <button class="btn btn-success btn-lg" data-bs-toggle="modal"
+                    [attr.data-bs-target]="isDeliverySelected ? '#Mapa' : '#MetodoDePago'"
+                    [style.background-color]="'#F2A1C2'" [style.border]="'none'">
                     Finalizar compra
                   </button>
-
                 </div>
 
               </div>
@@ -74,19 +75,32 @@
 
                     <div class="d-flex justify-content-between mb-2">
                       <p class="text-muted mb-0">Subtotal:</p>
-                      <p class="mb-0">${{ calculateSubtotal() }}</p>
+                      <p class="mb-0 fw-bold">${{ calculateSubtotal() }}</p>
                     </div>
 
-                    <div class="d-flex justify-content-between mb-2">
-                      <p class="text-muted mb-0">Mantenimiento de la aplicación:</p>
-                      <p class="mb-0">$20.00</p>
+                    <div class="form-check mb-2 mt-3">
+                      <input class="form-check-input" type="checkbox" id="deliveryCheck"
+                        [(ngModel)]="isDeliverySelected" [disabled]="calculateSubtotal() < minAmountForDelivery">
+                      <label class="form-check-label text-muted" for="deliveryCheck" style="font-size: 0.9rem;">
+                        ¿Desea envío a domicilio? (+$1.500)
+                      </label>
+                      <div *ngIf="calculateSubtotal() < minAmountForDelivery" class="text-danger"
+                        style="font-size: 0.75rem;">
+                        Compra mínima de $10.000 para delivery.
+                      </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2"
+                      *ngIf="isDeliverySelected && calculateSubtotal() >= minAmountForDelivery">
+                      <p class="text-muted mb-0">Costo de envío:</p>
+                      <p class="mb-0 text-success">+$1.500</p>
                     </div>
 
                     <hr class="my-3">
 
                     <div class="d-flex justify-content-between mb-4">
-                      <h5 class="text-dark mb-0">Total:</h5>
-                      <h5 class="text-dark mb-0">${{ calculateTotal() }}</h5>
+                      <h4 class="text-dark mb-0">Total:</h4>
+                      <h4 class="mb-0" style="color: #F2A1C2;">${{ calculateTotal() }}</h4>
                     </div>
 
                   </div>
@@ -166,69 +180,9 @@
         <div class="mb-3">
           <label for="paymentMethodSelect" class="form-label">Método de Pago:</label>
           <select class="form-select" id="paymentMethodSelect" [(ngModel)]="selectedPaymentMethod">
-            <option value="Efectivo">Efectivo</option>
-            <option value="Tarjeta">Tarjeta</option>
+            <option value="Efectivo">Efectivo (Paga al recibir)</option>
+            <option value="Mercado Pago">Mercado Pago (Tarjetas/Dinero en cuenta)</option>
           </select>
-        </div>
-
-        <div class="col-lg-12" *ngIf="selectedPaymentMethod === 'Tarjeta'">
-          <div class="card payment-card-details rounded-3">
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center mb-4">
-                <h5 class="mb-0 text-dark">Detalles de la tarjeta</h5>
-              </div>
-              <form class="mt-4">
-                <div class="form-outline mb-4">
-                  <label class="form-label payment-label" for="typeName">Nombre que figura en la tarjeta</label>
-                  <input type="text" id="typeName" class="form-control form-control-lg payment-input" size="17"
-                    placeholder="Ej: Juan Jose Perez" [(ngModel)]="cardHolderName" name="cardHolderName" required />
-                </div>
-
-                <div class="form-outline mb-4">
-                  <label class="form-label payment-label" for="typeNumber">Numero de la tarjeta</label>
-                  <input type="text" id="typeNumber" class="form-control form-control-lg payment-input" size="17"
-                    placeholder="Ej: 1234 5678 9012 3456" minlength="19" maxlength="19" [(ngModel)]="cardNumber"
-                    name="cardNumber" required />
-                </div>
-
-                <div class="row mb-4">
-                  <div class="col-md-6">
-                    <div class="form-outline">
-                      <label class="form-label payment-label" for="typeExp">Fecha de vencimiento</label>
-                      <input type="text" id="typeExp" class="form-control form-control-lg payment-input"
-                        placeholder="MM/YYYY" size="7" minlength="7" maxlength="7" [(ngModel)]="cardExpiration"
-                        name="cardExpiration" required />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-outline">
-                      <label class="form-label payment-label" for="typeCvv">CVV</label>
-                      <input type="password" id="typeCvv" class="form-control form-control-lg payment-input"
-                        placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" [(ngModel)]="cardCvv"
-                        name="cardCvv" required />
-                    </div>
-                  </div>
-                </div>
-              </form>
-
-              <hr class="my-4">
-
-              <div class="d-flex justify-content-between">
-                <p class="mb-2 text-dark">Subtotal</p>
-                <p class="mb-2 text-dark">${{ calculateSubtotal() }}</p>
-              </div>
-
-              <div class="d-flex justify-content-between">
-                <p class="mb-2 text-dark">Mantenimiento de la aplicación</p>
-                <p class="mb-2 text-dark">$20.00</p>
-              </div>
-
-              <div class="d-flex justify-content-between mb-4">
-                <p class="mb-2 text-dark">Total</p>
-                <p class="mb-2 text-dark">${{ calculateTotal() }}</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <div class="modal-footer">
