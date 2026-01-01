@@ -8,6 +8,7 @@ import { AlimentosComponent } from './pages/alimentos/alimentos.component';
 import { HigieneComponent } from './pages/higiene/higiene.component';
 import { SaludComponent } from './pages/salud/salud.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
+import { MisComprasComponent } from './pages/mis-compras/mis-compras.component';
 
 const routes: Routes = [
   { path: '', component:LoginComponent }, 
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: 'alimentos', component: AlimentosComponent },
       { path: 'higiene', component: HigieneComponent },
       { path: 'salud', component: SaludComponent },
-      { path: 'carrito', component: CarritoComponent }, 
+      { path: 'carrito', component: CarritoComponent },
+      { path: 'mis-compras', component: MisComprasComponent }, 
     ]
   }
 ];

@@ -13,5 +13,7 @@ namespace Delivery_services.Repositories
         public Task<bool> InsertInCarrito(Carrito carrito);
         public Task<bool> DeleteProductoInCarrito(string id);
         public Task<bool> ClearCarrito();
+        Task<bool> ConfirmarPedido(Pedido pedido);
+        Task<List<Pedido>> GetPedidosByUser(string email);
     }
 }

@@ -21,6 +21,22 @@
   },
   {
     "ContainingType": "Sistema_Delivery.Controllers.CarritoController",
+    "Method": "ConfirmarPedido",
+    "RelativePath": "api/carrito/ConfirmarPedido",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pedido",
+        "Type": "Delivery_models.Pedido",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sistema_Delivery.Controllers.CarritoController",
     "Method": "DeleteProductoInCarrito",
     "RelativePath": "api/carrito/DeleteProductoInCarrito",
     "HttpMethod": "DELETE",
@@ -56,6 +72,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[Delivery_models.Carrito, Delivery models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Sistema_Delivery.Controllers.CarritoController",
+    "Method": "GetPedidos",
+    "RelativePath": "api/carrito/GetPedidos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Delivery_models.Pedido, Delivery models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

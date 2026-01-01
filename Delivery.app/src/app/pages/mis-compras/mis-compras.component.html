@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4" style="color: #ffb7c5;">Mis Pedidos <i class="fas fa-shopping-bag"></i></h2>
+
+    <div *ngIf="misPedidos.length === 0" class="text-center">
+        <p>Aún no realizaste ninguna compra.</p>
+    </div>
+
+    <div class="accordion" id="accordionOrders">
+        <div class="accordion-item mb-3 border-0 shadow-sm" *ngFor="let pedido of misPedidos; let i = index"
+            style="border-radius: 15px; overflow: hidden;">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#collapse' + i" style="background-color: #fff0f5; color: #d81b60;">
+                    <div class="d-flex justify-content-between w-100 me-3">
+                        <span><strong>Pedido #{{pedido.id}}</strong> - {{pedido.fecha | date:'dd/MM/yyyy HH:mm'}}</span>
+                        <span class="badge"
+                            [ngClass]="{'bg-success': pedido.estado === 'Entregado', 'bg-warning text-dark': pedido.estado === 'Pendiente'}">
+                            {{pedido.estado}}
+                        </span>
+                    </div>
+                </button>
+            </h2>
+            <div [id]="'collapse' + i" class="accordion-collapse collapse" data-bs-parent="#accordionOrders">
+                <div class="accordion-body bg-white">
+                    <p><strong>Dirección:</strong> {{pedido.direccion}}</p>
+                    <p><strong>Método de Pago:</strong> {{pedido.metodoPago}}</p>
+                    <hr>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            *ngFor="let item of pedido.items">
+                            {{item.nombre}} ({{item.marca}})
+                            <span>${{item.precio}}</span>
+                        </li>
+                    </ul>
+                    <div class="text-end mt-3">
+                        <h5 style="color: #d81b60;">Total: ${{pedido.total}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

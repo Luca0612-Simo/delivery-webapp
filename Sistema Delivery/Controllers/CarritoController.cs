@@ -40,5 +40,18 @@ namespace Sistema_Delivery.Controllers
         {
             return await Task.Run(() => _carritoService.ClearCarrito());
         }
+
+        [HttpPost("ConfirmarPedido")]
+        public async Task<IActionResult> ConfirmarPedido([FromBody] Pedido pedido)
+        {
+            var resultado = await _carritoService.ConfirmarPedido(pedido);
+            if (resultado) return Ok(new { message = "Pedido registrado con éxito" });
+            return BadRequest("Error al procesar el pedido");
+        }
+        [HttpGet("GetPedidos")]
+        public async Task<List<Pedido>> GetPedidos(string email)
+        {
+            return await _carritoService.GetPedidosByUser(email);
+        }
     }
 }

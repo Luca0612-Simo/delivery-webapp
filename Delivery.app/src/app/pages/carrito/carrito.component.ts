@@ -75,13 +75,11 @@ export class CarritoComponent implements OnInit, AfterViewInit {
 
   initMercadoPago() {
     if (isPlatformBrowser(this.platformId)) {
-      // Verificamos si la variable global ya existe
       if (typeof MercadoPago !== 'undefined') {
         this.mp = new MercadoPago('APP_USR-d25d536a-2fb9-47ef-92a9-a20c4e0d0f38', {
           locale: 'es-AR'
         });
       } else {
-        // Si no existe, esperamos un momento y reintentamos
         setTimeout(() => this.initMercadoPago(), 500);
       }
     }
@@ -322,34 +320,24 @@ export class CarritoComponent implements OnInit, AfterViewInit {
     return total;
   }
 
+  
+
   ConfirmarCompra(): void {
-  if (!this.DataSourceProductos || this.DataSourceProductos.length === 0) {
-    this.showAlert('No podes finalizar la compra. Tu carrito está vacío.', 'danger');
-    return; 
-  }
+  const nuevoPedido = {
+    usuarioEmail: localStorage.getItem('user_email'), // Asegúrate de guardar el email al loguear
+    total: this.calculateTotal(),
+    metodoPago: this.selectedPaymentMethod,
+    direccion: this.address, // La que viene del mapa
+    items: this.DataSourceProductos
+  };
 
-  if (this.selectedPaymentMethod === 'Mercado Pago') {
-    this.onPagarMercadoPago(); // Llama a la lógica de Mercado Pago que agregamos antes
-  } else {
-    // Lógica para Efectivo
-    this.ClearCarrito();
-    this.showAlert('¡Pedido registrado! Pagás al recibir. Serás redirigido al catálogo.', 'success');
-
-    setTimeout(() => {
-      this.ngZone.run(() => {
-        this.router.navigate(['home/productos']);
-      });
-    }, 3000);
-  }
-
-  // Cerramos el modal
-  if (isPlatformBrowser(this.platformId)) {
-    const modalElement = document.getElementById('MetodoDePago'); 
-    if (modalElement) {
-      const modal = (window as any).bootstrap.Modal.getInstance(modalElement);
-      if (modal) { modal.hide(); }
-    }
-  }
+  this.service.ConfirmarPedido(nuevoPedido).subscribe({
+    next: () => {
+      this.showAlert('¡Pedido registrado! Lo estamos preparando.', 'success');
+      this.router.navigate(['home/productos']);
+    },
+    error: () => this.showAlert('Hubo un error al procesar tu pedido', 'danger')
+  });
 }
 
   showAlert(message: string, type: string): void {

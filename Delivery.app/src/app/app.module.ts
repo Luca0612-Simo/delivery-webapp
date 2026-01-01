@@ -14,6 +14,7 @@ import { AlimentosComponent } from './pages/alimentos/alimentos.component';
 import { HigieneComponent } from './pages/higiene/higiene.component';
 import { SaludComponent } from './pages/salud/salud.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
+import { MisComprasComponent } from './pages/mis-compras/mis-compras.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
     AlimentosComponent,
     HigieneComponent,
     SaludComponent,
-    CarritoComponent
+    CarritoComponent,
+    MisComprasComponent
   ],
   imports: [
     BrowserModule,
