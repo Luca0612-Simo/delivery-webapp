@@ -46,9 +46,8 @@ namespace Delivery_services
         {
             try
             {
-                string queryPedido = $@"INSERT INTO Pedidos (UsuarioEmail, Total, MetodoPago, Direccion) 
-                                VALUES ('{pedido.UsuarioEmail}', {pedido.Total.ToString(System.Globalization.CultureInfo.InvariantCulture)}, '{pedido.MetodoPago}', '{pedido.Direccion}');
-                                SELECT last_insert_rowid();";
+                string queryPedido = $@"INSERT INTO Pedidos (UsuarioEmail, Total, MetodoPago, Direccion, Estado) 
+                        VALUES ('{pedido.UsuarioEmail}', {pedido.Total.ToString(System.Globalization.CultureInfo.InvariantCulture)}, '{pedido.MetodoPago}', '{pedido.Direccion}', 'Pendiente')";
 
                 var dt = SqliteHandler.GetDt(queryPedido);
                 int pedidoId = Convert.ToInt32(dt.Rows[0][0]);

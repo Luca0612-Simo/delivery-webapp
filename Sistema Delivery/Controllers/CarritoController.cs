@@ -46,7 +46,7 @@ namespace Sistema_Delivery.Controllers
         {
             var resultado = await _carritoService.ConfirmarPedido(pedido);
             if (resultado) return Ok(new { message = "Pedido registrado con éxito" });
-            return BadRequest("Error al procesar el pedido");
+            return BadRequest("No se pudo registrar el pedido");
         }
         [HttpGet("GetPedidos")]
         public async Task<List<Pedido>> GetPedidos(string email)

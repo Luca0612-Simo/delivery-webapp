@@ -7,11 +7,13 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddCors(options => options.AddDefaultPolicy(builder => {
-    builder.AllowAnyOrigin();
-    builder.AllowAnyMethod();
-    builder.AllowAnyHeader();
-}));
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy => policy.WithOrigins("http://localhost:4200") 
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
 
 SqliteHandler.ConnectionString = builder.Configuration.GetConnectionString("defaultConnection");
 builder.Services.AddSingleton<iProductosRepository, ProductosServices>();
@@ -28,7 +30,7 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Stock.Backend");
     c.RoutePrefix = string.Empty;
 });
-app.UseCors();
+app.UseCors("AllowAngular");
 app.UseHttpsRedirection();
 app.MapControllers();
 app.UseAuthorization();

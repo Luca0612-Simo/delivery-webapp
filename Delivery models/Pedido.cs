@@ -9,7 +9,7 @@ namespace Delivery_models
         public decimal Total { get; set; }
         public string MetodoPago { get; set; }
         public string Direccion { get; set; }
-        public string Estado { get; set; }
+        public string? Estado { get; set; } = "Pendiente";
         public List<Carrito> Items { get; set; } 
     }
 }
