@@ -40,7 +40,7 @@ export class CarritoComponent implements OnInit, AfterViewInit {
   marca: any;
   precio: any;
 
-  mp : any;
+  mp: any;
 
   onPagarMercadoPago() {
     const costoEnvio = this.isDeliverySelected ? this.deliveryFee : 0;
@@ -320,25 +320,39 @@ export class CarritoComponent implements OnInit, AfterViewInit {
     return total;
   }
 
-  
+
 
   ConfirmarCompra(): void {
-  const nuevoPedido = {
-    usuarioEmail: localStorage.getItem('user_email'), // Asegúrate de guardar el email al loguear
-    total: this.calculateTotal(),
-    metodoPago: this.selectedPaymentMethod,
-    direccion: this.address, // La que viene del mapa
-    items: this.DataSourceProductos
-  };
+    const emailGuardado = localStorage.getItem('user_email');
+    if (!emailGuardado) {
+    this.showAlert('Debes estar logueado para comprar', 'danger');
+    return;
+  }
+    const nuevoPedido = {
+      usuarioEmail: emailGuardado,
+      total: this.calculateTotal(),
+      metodoPago: this.selectedPaymentMethod,
+      direccion: this.address,
+      items: this.DataSourceProductos
+    };
 
-  this.service.ConfirmarPedido(nuevoPedido).subscribe({
-    next: () => {
-      this.showAlert('¡Pedido registrado! Lo estamos preparando.', 'success');
-      this.router.navigate(['home/productos']);
-    },
-    error: () => this.showAlert('Hubo un error al procesar tu pedido', 'danger')
-  });
-}
+    this.service.ConfirmarPedido(nuevoPedido).subscribe({
+      next: () => {
+        // Si el pago es en efectivo, ya terminamos
+        if (this.selectedPaymentMethod === 'Efectivo') {
+          this.showAlert('¡Pedido registrado! Lo estamos preparando.', 'success');
+          this.router.navigate(['home/productos']);
+        } else {
+          // Si es Mercado Pago, ahora llamamos a la pasarela
+          this.onPagarMercadoPago();
+        }
+      },
+      error: (err) => {
+        console.error(err);
+        this.showAlert('Hubo un error al procesar tu pedido.', 'danger');
+      }
+    });
+  }
 
   showAlert(message: string, type: string): void {
     if (!isPlatformBrowser(this.platformId)) {

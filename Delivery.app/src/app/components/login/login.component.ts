@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
       this.dataSourceLogin = x;
       if (this.dataSourceLogin.result == true) {
         localStorage.setItem("user_state", "true");
+        localStorage.setItem("user_email", this.usuario);
         this.router.navigate(['/home/productos']);
       } else {
         this.mensaje = this.dataSourceLogin.mensaje;
